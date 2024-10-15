@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sample_kurth4cker"
+version = "0.0"
+authors = [
+    { name="kurth4cker", email="kurth4cker@gmail.com" },
+]
+description = "Sample python package"
+readme = "README.md"
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "License :: OSI Approved :: ISC License (ISCL)",
+    "Programming Language :: Python :: 3 :: Only",
+]
+
+[project.urls]
+Homepage = "https://git.sr.ht/~kurth4cker/sample-py3"
+Issues = "https://lists.sr.ht/~kurth4cker/public-inbox"
+
+[tool.hatch.build.targets.wheel]
+include = [
+  "sample.py",
+]
