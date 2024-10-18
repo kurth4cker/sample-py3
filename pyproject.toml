@@ -19,8 +19,3 @@ classifiers = [
 [project.urls]
 Homepage = "https://git.sr.ht/~kurth4cker/sample-py3"
 Issues = "https://lists.sr.ht/~kurth4cker/public-inbox"
-
-[tool.hatch.build.targets.wheel]
-include = [
-  "sample.py",
-]
