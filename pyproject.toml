@@ -15,6 +15,7 @@ classifiers = [
     "License :: OSI Approved :: ISC License (ISCL)",
     "Programming Language :: Python :: 3 :: Only",
 ]
+requires-python = ">=3.11"
 
 [project.urls]
 Homepage = "https://git.sr.ht/~kurth4cker/sample-py3"
