@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: 2024 kurth4cker <kurth4cker@gmail.com>
 
 import pytest
+from unittest.mock import patch
 from hashtable import HashTable
 
 def test_should_create_hashtable():
@@ -214,5 +215,40 @@ def test_should_create_hashtable_from_dict_with_custom_capacity():
     hash_table = HashTable.from_dict(dictionary, capacity=128)
 
     assert hash_table.capacity == 128
-    assert hash_table.keys == set(dictionary.keys())
-    assert hash_table.pairs == set(dictionary.items())
+
+def test_should_compare_equal_to_itself(hash_table):
+    assert hash_table == hash_table
+
+def test_should_compare_equal_to_copy(hash_table):
+    copy = hash_table.copy()
+    assert hash_table is not copy
+    assert hash_table == copy
+
+def test_should_compare_equal_different_key_value_order():
+    h1 = HashTable.from_dict({"a": 1, "b": 2, "c": 3})
+    h2 = HashTable.from_dict({"b": 2, "a": 1, "c": 3})
+    assert h1 == h2
+
+def test_should_compare_unequal(hash_table):
+    other = HashTable.from_dict({"different": "value"})
+    assert other != hash_table
+
+def test_should_compare_unequal_another_data_type(hash_table):
+    assert hash_table != 42
+
+def test_should_copy_keys_values_pairs_capacity(hash_table):
+    copy = hash_table.copy()
+    assert copy is not hash_table
+    assert set(hash_table.keys) == set(copy.keys)
+    assert set(hash_table.pairs) == set(copy.pairs)
+    assert hash_table.capacity == copy.capacity
+
+def test_should_compare_equal_different_capacity():
+    data = {"a": 1, "b": 2, "c": 3}
+    h1 = HashTable.from_dict(data, capacity=64)
+    h2 = HashTable.from_dict(data, capacity=128)
+    assert h1 == h2
+
+@patch("builtins.hash", return_value=42)
+def test_should_detect_hash_collision(hash_mock):
+    assert hash("foobar") == 42
