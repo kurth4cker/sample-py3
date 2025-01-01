@@ -1,18 +1,17 @@
 # SPDX-License-Identifier: ISC
-# SPDX-FileCopyrightText: 2024 kurth4cker <kurth4cker@gmail.com>
+# SPDX-FileCopyrightText: 2025 kurth4cker <kurth4cker@gmail.com>
 
 from pytest import skip
 from shapes import sand_clock
 
 def test_sand_clock():
-    # assert sand_clock(3) == [
-    #     [1, 2, 3],
-    #     [2, 3],
-    #     [3],
-    #     [2, 3],
-    #     [1, 2, 3],
-    # ]
-    skip("NOT IMPLEMENTED")
+    assert sand_clock(3) == [
+        [1, 2, 3],
+        [2, 3],
+        [3],
+        [2, 3],
+        [1, 2, 3],
+    ]
 
 def test_crown():
     skip("NOT IMPLEMENTED")
